@@ -1,0 +1,46 @@
+$todo-list-border-color: #d1cfcf
+$todo-list-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.125)
+
+.todo-list
+  display: table
+  background: white
+  border: 1px solid $todo-list-border-color
+  position: relative
+  width: 200px
+  height: 200px
+  box-shadow: $todo-list-box-shadow
+  &:before, &:after
+    position: absolute
+    background: white
+    content: ''
+    height: 10px
+    border: 1px solid $todo-list-border-color
+    box-shadow: $todo-list-box-shadow
+  &:before
+    z-index: -1
+    right: 1px
+    bottom: -3px
+    left: 1px
+  &:after
+    z-index: -2
+    right: 4px
+    bottom: -5px
+    left: 4px
+
+.todo-list--row
+  display: table-row
+  border-bottom: 1px solid lighten($todo-list-border-color, 30%)
+  &.m-header
+    padding-top: 10px
+  &.m-footer
+    padding-top: 10px
+    padding-bottom: 10px
+
+.todo-list--left-col, .todo-list--right-col
+  display: table-cell
+  padding: 5px
+
+.todo-list--left-col
+
+.todo-list--right-col
+  font-weight: bold

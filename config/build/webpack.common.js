@@ -8,7 +8,7 @@ module.exports = {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
         'app': './src/main.ts',
-        'styles': './src/global.scss'
+        'styles': './src/app.sass'
     },
 
     resolve: {
@@ -28,12 +28,12 @@ module.exports = {
                 use: 'html-loader'
             },
             {
-                test: /\.scss$/,
-                exclude: [ /node_modules/, helpers.root('src', 'global.scss') ],
+                test: /\.sass$/,
+                exclude: [ /node_modules/, helpers.root('src', 'app.sass') ],
                 use: [ 'to-string-loader', 'css-loader', 'sass-loader' ]
             },
             {
-                test: /global\.scss$/,
+                test: /app\.sass$/,
                 use: ExtractTextPlugin.extract({
                     use: 'css-loader!sass-loader'
                 })

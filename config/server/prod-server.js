@@ -4,7 +4,7 @@ const params = {
     port: 8181,
     root: 'dist',
     open: false,
-    ignore: 'scss,my/templates',
+    ignore: 'sass,my/templates',
     file: 'index.html',
     wait: 1000,
     logLevel: 2

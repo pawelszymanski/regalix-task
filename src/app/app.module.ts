@@ -6,21 +6,21 @@ import { HttpModule } from '@angular/http';
 
 import { APP_ROUTING } from './app.routing';
 
-import { HomeComponent } from './route/home/home.component';
+import { HomeComponent } from './routes/home/home.component';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        APP_ROUTING
-    ],
-    declarations: [
-        AppComponent,
-        HomeComponent
-    ],
-    bootstrap: [
-        AppComponent
-    ]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    APP_ROUTING
+  ],
+  declarations: [
+    AppComponent,
+    HomeComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {}

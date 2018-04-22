@@ -20,7 +20,7 @@ module.exports = {
                 use: 'html-loader'
             },
             {
-                test: /\.scss$/,
+                test: /\.sass$/,
                 exclude: /node_modules/,
                 use: [ 'to-string-loader', 'css-loader', 'sass-loader' ]
             }
