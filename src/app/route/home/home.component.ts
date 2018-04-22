@@ -1,10 +1,8 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "tyn-home",
-    templateUrl: './home.component.html',
-    styleUrls: [ "./home.component.scss" ]
+  selector: 'home',
+  templateUrl: './home.component.html',
+  styleUrls: [ './home.component.scss' ]
 })
-export class HomeComponent {
-    
-}
+export class HomeComponent {}
