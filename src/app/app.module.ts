@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { APP_ROUTING } from './app.routing';
 
 import { HomeComponent } from './routes/home/home.component';
+import { ToDoListComponent } from './components/todo-list/todo-list.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HomeComponent } from './routes/home/home.component';
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ToDoListComponent
   ],
   bootstrap: [
     AppComponent

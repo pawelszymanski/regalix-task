@@ -1,7 +1,7 @@
-<div class="home-component">
+<div class="home-component-wrapper">
 
     <p class="layout-selection">
-        Pick layout orientation:
+        Layout orientation:
         <span class="layout-button"
               [class.active]="layoutOrientation === LAYOUT_ORIENTATION.HORIZONTAL"
               (click)="setLayout(LAYOUT_ORIENTATION.HORIZONTAL)">Horizontal</span>
@@ -12,49 +12,10 @@
 
     <div class="content">
 
-        <div class="todo-list" [ngClass]="todoListModifierClass()">
-
-            <div class="todo-list--row m-header">
-                <div class="todo-list--left-col"></div>
-                <div class="todo-list--right-col"></div>
-            </div>
-
-            <div *ngFor="let todo of activeTodos()" class="todo-list--row">
-                <div class="todo-list--left-col">{{ todo.selected | json }}</div>
-                <div class="todo-list--right-col">{{ todo.text }}</div>
-            </div>
-
-            <div class="todo-list--row m-footer">
-                <div class="todo-list--left-col"></div>
-                <div class="todo-list--right-col">
-                    <div class="btn m-point-left">Previous</div>
-                    <div class="btn m-point-right">Next</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="todo-list" [ngClass]="todoListModifierClass()">
-
-            <div class="todo-list--row m-header">
-                <div class="todo-list--left-col"></div>
-                <div class="todo-list--right-col"></div>
-            </div>
-
-            <div *ngFor="let todo of deletedTodos()" class="todo-list--row">
-                <div class="todo-list--left-col">{{ todo.selected | json }}</div>
-                <div class="todo-list--right-col">{{ todo.text }}</div>
-            </div>
-
-            <div class="todo-list--row m-footer">
-                <div class="todo-list--left-col"></div>
-                <div class="todo-list--right-col">
-                    <div class="btn m-point-left">Previous</div>
-                    <div class="btn m-point-right">Next</div>
-                </div>
-            </div>
-
-        </div>
+        <todo-list [todos]="activeTodos()"
+                   [layoutModifierClasses]="todoListLayoutModifierClass() + ' ' + todoListMarginModifierClass()"></todo-list>
+        <todo-list [todos]="deletedTodos()"
+                   [layoutModifierClasses]="todoListLayoutModifierClass()"></todo-list>
 
     </div>
 

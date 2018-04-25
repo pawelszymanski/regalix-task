@@ -29,8 +29,12 @@ export class HomeComponent {
     this.layoutOrientation = newLayoutOrientation;
   }
 
-  todoListModifierClass(): string {
+  todoListLayoutModifierClass(): string {
     return 'm-' + this.layoutOrientation.toString().toLowerCase();
+  }
+
+  todoListMarginModifierClass(): string {
+    return this.layoutOrientation === LayoutOrientation.HORIZONTAL ? 'm-margin-bottom' : 'm-margin-right';
   }
 
   activeTodos(): ToDo[] {
