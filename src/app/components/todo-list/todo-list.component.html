@@ -1,0 +1,21 @@
+<div class="todo-list-component" [ngClass]="modifierClass">
+
+    <div class="todo-list--row m-header">
+        <div class="todo-list--left-col"></div>
+        <div class="todo-list--right-col"></div>
+    </div>
+
+    <div *ngFor="let todo of todos" class="todo-list--row">
+        <div class="todo-list--left-col">{{ todo.selected | json }}</div>
+        <div class="todo-list--right-col">{{ todo.text }}</div>
+    </div>
+
+    <div class="todo-list--row m-footer">
+        <div class="todo-list--left-col"></div>
+        <div class="todo-list--right-col">
+            <div class="btn m-point-left">Previous</div>
+            <div class="btn m-point-right">Next</div>
+        </div>
+    </div>
+
+</div>
