@@ -13,7 +13,7 @@
 
 .layout-button
   cursor: pointer
-  padding: 2px 4px
+  padding: 4px 4px 2px 4px
   border-radius: 3px
   &:hover, &.active
     background: #eee
@@ -21,3 +21,16 @@
 .content
   flex: 1
   padding: $padding-of-elements
+
+.todo-list-wrapper
+  &.m-horizontal
+    width: 100%
+    height: calc(50% - #{$padding-of-elements} / 2 )
+  &.m-vertical
+    float: left
+    width: calc(50% - #{$padding-of-elements} / 2 )
+    height: 100%
+  &.m-margin-right
+    margin-right: $padding-of-elements
+  &.m-margin-bottom
+    margin-bottom: $padding-of-elements

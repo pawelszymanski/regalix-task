@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { ToDo } from './../../types';
 
@@ -10,6 +10,5 @@ import { ToDo } from './../../types';
 export class ToDoListComponent {
 
   @Input() todos: ToDo[] = [];
-  @Input() layoutModifierClasses: string;
 
 }

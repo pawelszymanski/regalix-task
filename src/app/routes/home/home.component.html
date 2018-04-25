@@ -1,6 +1,6 @@
 <div class="home-component-wrapper">
 
-    <p class="layout-selection">
+    <h3 class="layout-selection">
         Layout orientation:
         <span class="layout-button"
               [class.active]="layoutOrientation === LAYOUT_ORIENTATION.HORIZONTAL"
@@ -8,14 +8,19 @@
         <span class="layout-button"
               [class.active]="layoutOrientation === LAYOUT_ORIENTATION.VERTICAL"
               (click)="setLayout(LAYOUT_ORIENTATION.VERTICAL)">Vertical</span>
-    </p>
+    </h3>
 
     <div class="content">
 
-        <todo-list [todos]="activeTodos()"
-                   [layoutModifierClasses]="todoListLayoutModifierClass() + ' ' + todoListMarginModifierClass()"></todo-list>
-        <todo-list [todos]="deletedTodos()"
-                   [layoutModifierClasses]="todoListLayoutModifierClass()"></todo-list>
+        <div class="todo-list-wrapper"
+             [ngClass]="todoListLayoutModifierClass() + ' ' + todoListMarginModifierClass()">
+            <todo-list [todos]="activeTodos()"></todo-list>
+        </div>
+
+        <div class="todo-list-wrapper"
+             [ngClass]="todoListLayoutModifierClass()">
+            <todo-list [todos]="deletedTodos()"></todo-list>
+        </div>
 
     </div>
 
