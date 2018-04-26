@@ -1,12 +1,16 @@
-@import './../../assests/styles/variables'
+@import '../variables'
 
 .icon-button
   cursor: pointer
   width: $icon-size
   height: $icon-size
-  background: $button-color
+  background: $color-button-bg-default
   border-radius: $border-radius
   position: relative
+
+  &:hover
+    background: $color-button-bg-hover
+
   &:after
     position: absolute
     top: 0

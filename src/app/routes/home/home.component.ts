@@ -17,7 +17,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.todos = [
-      { id: 1, text: 'Play soccer with friends', selected: true, deleted: false },
+      { id: 1, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', selected: true, deleted: false },
       { id: 2, text: 'Open Photoshop', selected: false, deleted: false },
       { id: 3, text: 'Finish client work', selected: true, deleted: false },
       { id: 4, text: 'Give away some PSDs', selected: false, deleted: true },
@@ -43,6 +43,23 @@ export class HomeComponent {
 
   deletedTodos(): ToDo[] {
     return this.todos.filter( todo => todo.deleted === true );
+  }
+
+  onAddTodo(newTodo: ToDo): void {
+    this.todos.push(newTodo);
+  }
+
+  onSoftDeleteTodos(idsOfTodosToBeRemoved: number[]): void {
+    this.todos.forEach( todo => {
+      if (idsOfTodosToBeRemoved.indexOf(todo.id) > -1) {
+        todo.selected = false;
+        todo.deleted = true;
+      }
+    });
+  }
+
+  onHardDeleteTodos(idsOfTodosToBeRemoved: number[]): void {
+    this.todos = this.todos.filter( todo => idsOfTodosToBeRemoved.indexOf(todo.id) === -1 );
   }
 
 }

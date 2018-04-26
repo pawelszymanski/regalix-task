@@ -14,12 +14,15 @@
 
         <div class="todo-list-wrapper"
              [ngClass]="todoListLayoutModifierClass() + ' ' + todoListMarginModifierClass()">
-            <todo-list [todos]="activeTodos()"></todo-list>
+            <todo-list [todos]="activeTodos()"
+                       (addTodo)="onAddTodo($event)"
+                       (removeTodos)="onSoftDeleteTodos($event)"></todo-list>
         </div>
 
         <div class="todo-list-wrapper"
              [ngClass]="todoListLayoutModifierClass()">
-            <todo-list [todos]="deletedTodos()"></todo-list>
+            <todo-list [todos]="deletedTodos()"
+                       (removeTodos)="onHardDeleteTodos($event)"></todo-list>
         </div>
 
     </div>

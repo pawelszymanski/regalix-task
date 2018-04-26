@@ -1,33 +1,41 @@
 <div class="todo-list-component-wrapper">
 
     <div class="todo-list--row">
-        <div class="todo-list--left-col m-header">
+        <div class="todo-list--first-column m-header">
             <div class="checkbox"
+                 *ngIf="todos.length > 0"
                  [class.selected]="isAnyTodoSelected()"
                  [class.disabled]="!areAllTodoSelected()"
                  (click)="onToggleAllClick()"></div>
         </div>
-        <div class="todo-list--right-col m-header">
-            <div class="icon-button m-add" (click)="onAddClick()"></div>
-            <div class="icon-button m-remove" (click)="onRemoveClick()"></div>
-            <div class="icon-button m-settings" (click)="onSettingsClick()"></div>
+        <div class="todo-list--second-column m-header">
+            <div class="icon-button m-add"
+                 (click)="onAddClick()"></div>
+            <div class="icon-button m-remove"
+                 (click)="onRemoveClick()"></div>
+            <div class="icon-button m-settings"></div>
         </div>
     </div>
 
-    <div *ngFor="let todo of todos" class="todo-list--row">
-        <div class="todo-list--left-col">
+    <div *ngFor="let todo of visibleTodos()" class="todo-list--row">
+        <div class="todo-list--first-column">
             <div class="checkbox"
                  [class.selected]="todo.selected"
                  (click)="todo.selected = !todo.selected"></div>
         </div>
-        <div class="todo-list--right-col">{{ todo.text }}</div>
+        <p class="todo-list--second-column">{{ todo.text }}</p>
     </div>
 
     <div class="todo-list--row">
-        <div class="todo-list--left-col m-footer"></div>
-        <div class="todo-list--right-col m-footer">
-            <div class="paging-button m-point-left">Previous</div>
-            <div class="paging-button m-point-right">Next</div>
+        <div class="todo-list--first-column m-footer"></div>
+        <div class="todo-list--second-column m-footer">
+            <div class="paging-button m-pointer-left"
+                 [class.disabled]="isPageFirst() || todos.length === 0"
+                 (click)="goPrevPage()">Previous</div>
+            <p class="pagination">{{ paginationText() }}</p>
+            <div class="paging-button m-pointer-right"
+                 [class.disabled]="isPageLast() || todos.length === 0"
+                 (click)="goNextPage()">Next</div>
         </div>
     </div>
 

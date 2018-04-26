@@ -1,0 +1,72 @@
+@import '../variables'
+@import '../mixins'
+
+@mixin arrow-icon-shared
+  content: "\f144"
+  display: inline-block
+  font-family: FontAwesome
+
+@mixin button-arrow-shared
+  content: " "
+  width: 0
+  height: 0
+  border-style: solid
+
+.paging-button
+  cursor: pointer
+  height: $icon-size + 5px
+  background: $color-button-bg-default
+  color: $color-font-default
+  position: relative
+
+  &:hover
+    background: $color-button-bg-hover
+
+  &.disabled, &[disabled]
+    cursor: not-allowed
+    opacity: 0.5
+    &:hover
+      background: $color-button-bg-default
+
+  &.m-pointer-right
+    float: right
+    padding-left: 4px
+    +border-radius-left($border-radius)
+    +border-radius-right(0)
+    &:before
+      +position-block(absolute, 0, -4px, 0, auto)
+      +button-arrow-shared
+      border-width: 10.5px 0 10.5px 4px
+      border-color: transparent transparent transparent $color-button-bg-default
+    &:after
+      +arrow-icon-shared
+      margin: 0 2px 0 4px
+    &:hover
+      &:before
+        border-left-color: $color-button-bg-hover
+    &.disabled, &[disabled]
+      &:hover
+        &:before
+          border-left-color: $color-button-bg-default
+
+  &.m-pointer-left
+    float: left
+    padding-right: 4px
+    +border-radius-left(0)
+    +border-radius-right($border-radius)
+    &:before
+      +arrow-icon-shared
+      margin: 0 4px 0 2px
+      transform: rotate(-180deg)
+    &:after
+      +position-block(absolute, 0, auto, 0, -4px)
+      +button-arrow-shared
+      border-width: 10.5px 4px 10.5px 0
+      border-color: transparent $color-button-bg-default transparent transparent
+    &:hover
+      &:after
+        border-right-color: $color-button-bg-hover
+    &.disabled, &[disabled]
+      &:hover
+        &:after
+          border-right-color: $color-button-bg-default
