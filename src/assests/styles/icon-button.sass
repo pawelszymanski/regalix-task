@@ -1,0 +1,27 @@
+@import './../../assests/styles/variables'
+
+.icon-button
+  cursor: pointer
+  width: $icon-size
+  height: $icon-size
+  background: $button-color
+  border-radius: $border-radius
+  position: relative
+  &:after
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    font-family: FontAwesome
+    text-align: center
+    line-height: $icon-size
+
+  &.m-add:after
+    content: "\f067"
+
+  &.m-remove:after
+    content: "\f1f8"
+
+  &.m-settings:after
+    content: "\f013"

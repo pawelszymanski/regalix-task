@@ -10,7 +10,6 @@ $todo-list-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.125)
   border: 1px solid $todo-list-border-color
   position: relative
   box-shadow: $todo-list-box-shadow
-  box-sizing: border-box
   &:before, &:after
     position: absolute
     background: white
@@ -30,17 +29,36 @@ $todo-list-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.125)
     left: 4px
 
 .todo-list--row
-  border-bottom: 1px solid lighten($todo-list-border-color, 30%)
-  &.m-header
-    padding-top: 10px
-  &.m-footer
-    padding-top: 10px
-    padding-bottom: 10px
+  clear: both
+  line-height: 20px
+  border-bottom: 1px solid #e6ebed
 
 .todo-list--left-col, .todo-list--right-col
-  padding: 5px
+  height: 30px
+  padding: 7px 10px
+  &.m-header
+    height: 40px
+    padding-top: $padding-of-elements * 3 / 4
+  &.m-footer
+    height: 45px
+    padding-top: $padding-of-elements / 2
+    padding-bottom: $padding-of-elements / 2
 
 .todo-list--left-col
+  float: left
+  width: 40px
+  text-align: right
+  border-right: 1px solid #f2e3df
 
 .todo-list--right-col
-  font-weight: bold
+  float: right
+  width: calc(100% - 43px)
+  border-left: 1px solid #f2e3df
+  .icon-button
+    &.m-add
+      float: left
+      margin-right: $icon-size / 2
+    &.m-remove
+      float: left
+    &.m-settings
+      float: right

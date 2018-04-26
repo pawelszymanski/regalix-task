@@ -1,20 +1,33 @@
 <div class="todo-list-component-wrapper">
 
-    <div class="todo-list--row m-header">
-        <div class="todo-list--left-col"></div>
-        <div class="todo-list--right-col"></div>
+    <div class="todo-list--row">
+        <div class="todo-list--left-col m-header">
+            <div class="checkbox"
+                 [class.selected]="isAnyTodoSelected()"
+                 [class.disabled]="!areAllTodoSelected()"
+                 (click)="onToggleAllClick()"></div>
+        </div>
+        <div class="todo-list--right-col m-header">
+            <div class="icon-button m-add" (click)="onAddClick()"></div>
+            <div class="icon-button m-remove" (click)="onRemoveClick()"></div>
+            <div class="icon-button m-settings" (click)="onSettingsClick()"></div>
+        </div>
     </div>
 
     <div *ngFor="let todo of todos" class="todo-list--row">
-        <div class="todo-list--left-col">{{ todo.selected | json }}</div>
+        <div class="todo-list--left-col">
+            <div class="checkbox"
+                 [class.selected]="todo.selected"
+                 (click)="todo.selected = !todo.selected"></div>
+        </div>
         <div class="todo-list--right-col">{{ todo.text }}</div>
     </div>
 
-    <div class="todo-list--row m-footer">
-        <div class="todo-list--left-col"></div>
-        <div class="todo-list--right-col">
-            <div class="btn m-point-left">Previous</div>
-            <div class="btn m-point-right">Next</div>
+    <div class="todo-list--row">
+        <div class="todo-list--left-col m-footer"></div>
+        <div class="todo-list--right-col m-footer">
+            <div class="paging-button m-point-left">Previous</div>
+            <div class="paging-button m-point-right">Next</div>
         </div>
     </div>
 

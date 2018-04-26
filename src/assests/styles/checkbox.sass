@@ -1,0 +1,40 @@
+@import './../../assests/styles/variables'
+
+$active-color: #6bb3ca
+$disabled-color: #cacaca
+
+.checkbox
+  display: inline-block
+  cursor: pointer
+  width: $icon-size
+  height: $icon-size
+  background: white
+  border: 1px solid $active-color
+  position: relative
+
+  &:after
+    content: ""
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    color: $active-color
+    font-family: FontAwesome
+    text-align: center
+    line-height: 15px
+    font-weight: bold
+    font-size: 11px
+
+  &.selected
+    &:after
+      content: "\f00c"
+
+  &.disabled, &[disabled]
+    border: 1px solid $disabled-color
+    &:after
+      color: $disabled-color
+    &.selected
+      border: 1px solid $disabled-color
+      &:after
+        color: $disabled-color
