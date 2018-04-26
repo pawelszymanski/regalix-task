@@ -58,9 +58,18 @@ $todo-list-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.125)
   float: right
   width: calc(100% - 43px)
   border-left: 1px solid #f2e3df
-  overflow: hidden
-  white-space: nowrap
-  text-overflow: ellipsis
+  @at-root
+    p#{&}
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+  @at-root
+    input#{&}
+      font-family: $font-family
+      outline: none
+      border-top: none
+      border-bottom: none
+      background: $color-button-bg-hover
   .icon-button
     &.m-add
       float: left

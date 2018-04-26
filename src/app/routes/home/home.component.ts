@@ -50,12 +50,14 @@ export class HomeComponent {
   }
 
   onSoftDeleteTodos(idsOfTodosToBeRemoved: number[]): void {
-    this.todos.forEach( todo => {
-      if (idsOfTodosToBeRemoved.indexOf(todo.id) > -1) {
-        todo.selected = false;
-        todo.deleted = true;
-      }
+    let todosWithNoChanges = this.todos.filter( todo => idsOfTodosToBeRemoved.indexOf(todo.id) === -1);
+    let todosToBeMoved = this.todos.filter( todo => idsOfTodosToBeRemoved.indexOf(todo.id) > -1);
+    todosToBeMoved.forEach( todo => {
+      todo.selected = false;
+      todo.deleted = true;
+      delete todo.isEditModeOn;
     });
+    this.todos = todosWithNoChanges.concat(todosToBeMoved);
   }
 
   onHardDeleteTodos(idsOfTodosToBeRemoved: number[]): void {

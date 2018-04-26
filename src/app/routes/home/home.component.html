@@ -22,6 +22,8 @@
         <div class="todo-list-wrapper"
              [ngClass]="todoListLayoutModifierClass()">
             <todo-list [todos]="deletedTodos()"
+                       [isAddButtonEnabled]="false"
+                       [canNamesBeEdited]="false"
                        (removeTodos)="onHardDeleteTodos($event)"></todo-list>
         </div>
 

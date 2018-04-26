@@ -10,6 +10,7 @@
         </div>
         <div class="todo-list--second-column m-header">
             <div class="icon-button m-add"
+                 *ngIf="isAddButtonEnabled"
                  (click)="onAddClick()"></div>
             <div class="icon-button m-remove"
                  (click)="onRemoveClick()"></div>
@@ -23,7 +24,15 @@
                  [class.selected]="todo.selected"
                  (click)="todo.selected = !todo.selected"></div>
         </div>
-        <p class="todo-list--second-column">{{ todo.text }}</p>
+        <p class="todo-list--second-column"
+           *ngIf="!todo.isEditModeOn"
+            (dblclick)="todo.isEditModeOn = true">{{ todo.text }}</p>
+        <input type="text"
+               placeholder="Type text here..."
+               class="todo-list--second-column"
+               *ngIf="todo.isEditModeOn"
+               [(ngModel)]="todo.text"
+               (keydown)="onInPlaceEditKeyDown($event, todo.id)">
     </div>
 
     <div class="todo-list--row">

@@ -12,6 +12,8 @@ export class ToDoListComponent implements OnChanges {
   readonly TODOS_PER_PAGE = 5;
 
   @Input() todos: ToDo[] = [];
+  @Input() isAddButtonEnabled = true;
+  @Input() canNamesBeEdited = true;
   currentPage = 1;
 
   @Output() addTodo: EventEmitter<ToDo> = new EventEmitter();
@@ -47,7 +49,8 @@ export class ToDoListComponent implements OnChanges {
       id: new Date().getTime(),
       selected: false,
       deleted: false,
-      text: 'New todo...'
+      text: '',
+      isEditModeOn: true
     });
   }
 
@@ -76,7 +79,7 @@ export class ToDoListComponent implements OnChanges {
     return this.currentPage === totalPages;
   }
 
-  howManyPagesOfTodos(): number {
+  howManyPagesTotal(): number {
     return Math.ceil(this.todos.length / this.TODOS_PER_PAGE);
   }
 
@@ -95,7 +98,13 @@ export class ToDoListComponent implements OnChanges {
     let currentPageStart = ((this.currentPage - 1) * this.TODOS_PER_PAGE) + 1;
     let currentPageEnd =  ((this.currentPage - 1) * this.TODOS_PER_PAGE) + this.TODOS_PER_PAGE;
     let actualEnd = Math.min(currentPageEnd, this.todos.length);
-    return `${currentPageStart} - ${actualEnd} of ${this.todos.length} (page ${this.currentPage} of ${this.howManyPagesOfTodos()})`;
+    return `${currentPageStart} - ${actualEnd} of ${this.todos.length} (page ${this.currentPage} of ${this.howManyPagesTotal()})`;
+  }
+
+  onInPlaceEditKeyDown(event: KeyboardEvent, todoId: number): void {
+    if (event.key === 'Enter') {
+      this.todos['find']( todo => todo.id === todoId).isEditModeOn = false;
+    }
   }
 
 }
