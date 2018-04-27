@@ -1,19 +1,23 @@
 @import './../../../assests/styles/variables'
+@import './../../../assests/styles/mixins'
 
 .home-component-wrapper
   height: 100%
   display: flex
   flex-direction: column
 
-.layout-selection
+.debugging-tools
   padding: $padding-of-elements
   background: #ddd
   border-bottom: 1px solid #ccc
+  h3 + h3
+    margin-top: 10px
 
-.layout-button
+.debugging-tools-button
   cursor: pointer
   padding: 4px 4px 2px 4px
   border-radius: $border-radius
+  +disable-selection
   &:hover, &.active
     background: $color-button-bg-default
 

@@ -9,6 +9,8 @@ import { APP_ROUTING } from './app.routing';
 import { HomeComponent } from './routes/home/home.component';
 import { ToDoListComponent } from './components/todo-list/todo-list.component';
 
+import { ToDoGeneratorService } from './services';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,6 +22,9 @@ import { ToDoListComponent } from './components/todo-list/todo-list.component';
     AppComponent,
     HomeComponent,
     ToDoListComponent
+  ],
+  providers: [
+    ToDoGeneratorService
   ],
   bootstrap: [
     AppComponent

@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 
 import { ToDo } from './../../types';
+import { ToDoGeneratorService } from '../../services/todo-generator';
 
 @Component({
   selector: 'todo-list',
@@ -18,6 +19,10 @@ export class ToDoListComponent implements OnChanges {
 
   @Output() addTodo: EventEmitter<ToDo> = new EventEmitter();
   @Output() removeTodos: EventEmitter<number[]> = new EventEmitter();
+
+  constructor(
+    private toDoGeneratorService: ToDoGeneratorService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     let todosCount = changes.todos.currentValue.length;
@@ -46,7 +51,7 @@ export class ToDoListComponent implements OnChanges {
 
   onAddClick(): void {
     this.addTodo.emit({
-      id: new Date().getTime(),
+      id: this.toDoGeneratorService.generateTodoId(),
       selected: false,
       deleted: false,
       text: '',
@@ -94,7 +99,7 @@ export class ToDoListComponent implements OnChanges {
   }
 
   paginationText(): string {
-    if (this.todos.length === 0) { return 'No todos to be listed' };
+    if (this.todos.length === 0) { return 'No todos to be listed' }
     let currentPageStart = ((this.currentPage - 1) * this.TODOS_PER_PAGE) + 1;
     let currentPageEnd =  ((this.currentPage - 1) * this.TODOS_PER_PAGE) + this.TODOS_PER_PAGE;
     let actualEnd = Math.min(currentPageEnd, this.todos.length);

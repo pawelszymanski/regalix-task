@@ -1,4 +1,5 @@
 @import '../variables'
+@import '../mixins'
 
 .icon-button
   cursor: pointer
@@ -7,6 +8,7 @@
   background: $color-button-bg-default
   border-radius: $border-radius
   position: relative
+  +disable-selection
 
   &:hover
     background: $color-button-bg-hover

@@ -1,16 +1,23 @@
 <div class="home-component-wrapper">
 
-    <h3 class="layout-selection">
-        Layout orientation:
-        <span class="layout-button"
-              [class.active]="layoutOrientation === LAYOUT_ORIENTATION.HORIZONTAL"
-              (click)="setLayout(LAYOUT_ORIENTATION.HORIZONTAL)">Horizontal</span>
-        <span class="layout-button"
-              [class.active]="layoutOrientation === LAYOUT_ORIENTATION.VERTICAL"
-              (click)="setLayout(LAYOUT_ORIENTATION.VERTICAL)">Vertical</span>
-    </h3>
+    <section class="debugging-tools">
+        <h3>
+            Layout orientation:
+            <span class="debugging-tools-button"
+                  [class.active]="layoutOrientation === LAYOUT_ORIENTATION.HORIZONTAL"
+                  (click)="setLayout(LAYOUT_ORIENTATION.HORIZONTAL)">Horizontal</span>
+            <span class="debugging-tools-button"
+                  [class.active]="layoutOrientation === LAYOUT_ORIENTATION.VERTICAL"
+                  (click)="setLayout(LAYOUT_ORIENTATION.VERTICAL)">Vertical</span>
+        </h3>
+        <h3>
+            Todo generator:
+            <span class="debugging-tools-button"
+                  (click)="addRandomTodo()">Add Todo</span>
+        </h3>
+    </section>
 
-    <div class="content">
+    <section class="content">
 
         <div class="todo-list-wrapper"
              [ngClass]="todoListLayoutModifierClass() + ' ' + todoListMarginModifierClass()">
@@ -27,6 +34,6 @@
                        (removeTodos)="onHardDeleteTodos($event)"></todo-list>
         </div>
 
-    </div>
+    </section>
 
 </div>
